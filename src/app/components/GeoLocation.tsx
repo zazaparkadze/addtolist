@@ -40,20 +40,24 @@ export default function GeoLocation() {
     }
   }
   /* 
-  const homeCoords = {
+  const plantCoords = {
     lat: 31.9291392,
     lon: 34.8356608,
   }; */
-  /* 
-  const plantCoords = {
+
+  /*  const plantCoords = {
     lat: 32.01979436,
     lon: 34.80102135,
   }; */
-
+  const plantCoords = {
+    lat: 32.0200309,
+    lon: 34.7864964,
+  };
+  /* 
   const plantCoords = {
     lat: 32.0852999,
     lon: 34.7817676,
-  };
+  }; */
   function insidePlant(locationCoords: LocationCoords): boolean {
     if (
       locationCoords.lat < plantCoords.lat + 0.00018 &&
@@ -91,7 +95,7 @@ export default function GeoLocation() {
           <Link href={"/enrollment"}> Click to Enroll </Link>
         </p>
       ) : (
-        <p className="text-red-500 p-5">unauthorized</p>
+        <p className="text-red-500">Unauthorized</p>
       )}
     </div>
   );

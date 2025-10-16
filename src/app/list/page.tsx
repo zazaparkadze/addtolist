@@ -16,6 +16,10 @@ export default function MixersList() {
           );
         })}
       </div>
+      <p>
+        {list.length} {list.length === 1 ? "mixer    " : "mixers  "}
+        in the list
+      </p>
     </div>
   );
 }

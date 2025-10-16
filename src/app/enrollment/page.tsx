@@ -1,24 +1,30 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { useData } from "@/app/content/DataContext";
 
 export default function EnrollPage() {
   const [name, setName] = useState("");
-  const { addItem } = useData();
+  const { setList, list } = useData();
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
+
   const router = useRouter();
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("submitted");
     setName("");
-    addItem(
+    setList([
+      ...list,
       name +
         " " +
         new Date().toLocaleDateString() +
         "\t" +
-        new Date().toLocaleTimeString()
-    );
+        new Date().toLocaleTimeString(),
+    ]);
     router.push("/list");
   };
 
@@ -30,8 +36,10 @@ export default function EnrollPage() {
       >
         <input
           type="text"
-          placeholder="#number"
+          placeholder="#"
           value={name}
+          ref={inputRef}
+          required
           onChange={(e) => setName(e.target.value)}
           className="flex shrink-1 bg-gray-400 text-xl px-4 py-2 border-2 rounded-2xl
              border-gray-700 focus:bg-gray-800 focus:text-gray-100"

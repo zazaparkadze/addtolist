@@ -3,19 +3,20 @@ import { createContext, useContext, useState, ReactNode } from "react";
 
 interface DataContextType {
   list: string[];
-  addItem: (item: string) => void;
+  setList: (item: string[]) => void;
 }
 
-//Create context with correct type (can start as undefined)
-const DataContext = createContext<DataContextType | undefined>(undefined);
+export const DataContext = createContext<DataContextType | undefined>(
+  undefined
+);
 
-export function DataProvider({ children }: { children: ReactNode }) {
+export default function DataProvider({ children }: { children: ReactNode }) {
   const [list, setList] = useState<string[]>([]);
-  const addItem = (item: string) => {
+  /*  const addItem = (item: string) => {
     setList((prev) => [...prev, item]);
-  };
+  }; */
   return (
-    <DataContext.Provider value={{ list, addItem }}>
+    <DataContext.Provider value={{ list, setList }}>
       {children}
     </DataContext.Provider>
   );
