@@ -11,7 +11,7 @@ export default function BackButton() {
   return (
     <button
       onClick={handleClick}
-      className="flex gap-3 opacity-75 hover:opacity-100 hover:bg-amber-400 hover:cursor-pointer text-4xl text-gray-800 max-w-fit border-1 px-5 py-2"
+      className="flex items-center gap-1 opacity-60 hover:opacity-100 hover:cursor-pointer text-xl text-black max-w-fit px-3 py-1 bg-radial from-blue-50 to-blue-200"
     >
       <FaBackward />
       <p className="hidden sm:block ">Back</p>

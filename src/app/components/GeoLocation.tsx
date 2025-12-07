@@ -39,20 +39,20 @@ export default function GeoLocation() {
       x.innerHTML = "Geolocation is not supported by this browser.";
     }
   }
-  /* 
+
   const plantCoords = {
-    lat: 31.9291392,
-    lon: 34.8356608,
-  }; */
+    lat: 31.9619072,
+    lon: 34.8520448,
+  };
 
   /*  const plantCoords = {
     lat: 32.01979436,
     lon: 34.80102135,
   }; */
-  const plantCoords = {
+  /*  const plantCoords = {
     lat: 32.0200309,
     lon: 34.7864964,
-  };
+  }; */
   /* 
   const plantCoords = {
     lat: 32.0852999,

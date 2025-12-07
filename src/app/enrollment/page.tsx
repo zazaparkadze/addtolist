@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { useData } from "@/app/content/DataContext";
+import { useData } from "@/app/context/DataContext";
 
 export default function EnrollPage() {
   const [name, setName] = useState("");
@@ -13,6 +13,7 @@ export default function EnrollPage() {
     inputRef.current?.focus();
   }, []);
 
+  const re: RegExp = /^\d{3}$/;
   const router = useRouter();
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -44,6 +45,12 @@ export default function EnrollPage() {
           className="flex shrink-1 bg-gray-400 text-xl px-4 py-2 border-2 rounded-2xl
              border-gray-700 focus:bg-gray-800 focus:text-gray-100"
         />
+        <p>
+          <span className="font-bold">{name} </span>
+          {name === "" ? null : (
+            <span>{re.test(name) ? " OK" : " not valid"}</span>
+          )}
+        </p>
         <button
           className="text-xl w-33
          bg-gray-400  border-2 rounded-xl p-1 border-gray-700 active:bg-gray-800 active:text-gray-400"

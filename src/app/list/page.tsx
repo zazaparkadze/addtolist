@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
-import { useData } from "@/app/content/DataContext";
+import { useData } from "@/app/context/DataContext";
+import BackButton from "@/ui/BackButton";
+import ListItem from "./components/ListItem";
 
 export default function MixersList() {
   const { list } = useData();
@@ -9,17 +11,14 @@ export default function MixersList() {
       Mixers List:
       <div>
         {list.map((mixer) => {
-          return (
-            <p key={mixer}>
-              <span className="font-bold">{mixer}</span>
-            </p>
-          );
+          return <ListItem mixer={mixer} key={mixer} />;
         })}
       </div>
       <p>
-        {list.length} {list.length === 1 ? "mixer" : "mixers  "}
+        {list.length} {list.length === 1 ? " mixer " : " mixers "}
         in the list
       </p>
+      <BackButton />
     </div>
   );
 }
